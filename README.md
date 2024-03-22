@@ -4,10 +4,9 @@
 Link: https://www.coursera.org/learn/algorithms-part1
 
 ### All work is done in Java using nvim as my IDE
-
-## Week 0 Notes
 compile using `javac -cp algs4.jar;. RandomWord.java` and run using `java -cp algs4.jar;. RandomWord.java`.
 
+## Week 0 Notes
 Passed with 100/100
 
 

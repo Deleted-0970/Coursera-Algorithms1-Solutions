@@ -4,9 +4,14 @@
 Link: https://www.coursera.org/learn/algorithms-part1
 
 ### All work is done in Java using nvim as my IDE
-compile using `javac -cp algs4.jar;. RandomWord.java` and run using `java -cp algs4.jar;. RandomWord.java`.
+compile using `javac -cp ../algs4.jar;. FileName.java` and run using `java -cp ../algs4.jar;. FileName.java`.
 
 ## Week 0 Notes
 Passed with 100/100
+
+## Week 1 Notes
+Passed with 90/100
+
+Backwashing bug according to autograder ~ I did some testing in a main method and was unable replicate the bug.
 
 

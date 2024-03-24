@@ -23,7 +23,8 @@ public class Percolation {
 			this.board[row - 1][col - 1]++; // open spot
 			if (row == 1) {
 				this.connect.union(0, col); // connect to top if top row
-			} else if (row == this.n) { 
+			}
+			if (row == this.n) { 
 				this.connect.union(this.n * this.n + 1, this.n * (this.n - 1) + col); // connect to bottom if bottom row
 			}
 			if (row - 1 > 0 && this.isOpen(row - 1, col)) {
@@ -48,6 +49,9 @@ public class Percolation {
 
 	public boolean isFull(int row, int col) {
 		exceptionCheck(row, col);
+		if (!this.isOpen(row, col)) {
+			return false;
+		}
 		return this.connect.find(index(row, col)) == this.connect.find(0);
 	}
 
@@ -66,16 +70,16 @@ public class Percolation {
 	}
 
 	public static void main(String[] args) {
-		Percolation p = new Percolation(3);
-		p.open(1, 1);
-		System.out.println(p.isOpen(1, 1));
-		System.out.println(p.isFull(1, 1));
-		p.open(2, 1); 
-		System.out.println(p.isOpen(2, 1));
-		System.out.println(p.isFull(2, 1));
-		p.open(2, 2);
-		p.open(3, 2);
-		System.out.println("result: " + p.percolates());
+		// Percolation p = new Percolation(3);
+		// p.open(1, 1);
+		// System.out.println(p.isOpen(1, 1));
+		// System.out.println(p.isFull(1, 1));
+		// p.open(2, 1); 
+		// System.out.println(p.isOpen(2, 1));
+		// System.out.println(p.isFull(2, 1));
+		// p.open(2, 2);
+		// p.open(3, 2);
+		// System.out.println("result: " + p.percolates());
 	}
 
 	private void exceptionCheck(int i, int j) {

@@ -49,9 +49,6 @@ public class Percolation {
 
 	public boolean isFull(int row, int col) {
 		exceptionCheck(row, col);
-		if (!this.isOpen(row, col)) {
-			return false;
-		}
 		return this.connect.find(index(row, col)) == this.connect.find(0);
 	}
 
@@ -70,15 +67,16 @@ public class Percolation {
 	}
 
 	public static void main(String[] args) {
-		// Percolation p = new Percolation(3);
+		Percolation p = new Percolation(3);
 		// p.open(1, 1);
 		// System.out.println(p.isOpen(1, 1));
 		// System.out.println(p.isFull(1, 1));
 		// p.open(2, 1); 
 		// System.out.println(p.isOpen(2, 1));
 		// System.out.println(p.isFull(2, 1));
-		// p.open(2, 2);
-		// p.open(3, 2);
+		p.open(2, 2);
+		p.open(3, 2);
+		System.out.println(p.isFull(3, 2));
 		// System.out.println("result: " + p.percolates());
 	}
 

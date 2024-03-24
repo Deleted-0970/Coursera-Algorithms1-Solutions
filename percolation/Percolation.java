@@ -19,17 +19,25 @@ public class Percolation {
 
 	public void open(int row, int col) {
 		exceptionCheck(row, col);
-		if (this.board[row - 1][col - 1] == 0) {
+		if (!this.isOpen(row, col)) {
 			this.board[row - 1][col - 1]++; // open spot
 			if (row == 1) {
 				this.connect.union(0, col); // connect to top if top row
 			} else if (row == this.n) { 
 				this.connect.union(this.n * this.n + 1, this.n * (this.n - 1) + col); // connect to bottom if bottom row
 			}
-			if (col < this.n && this.board[row - 1][col] != 0) this.connect.union(index(row - 1, col - 1), index(row - 1, col));
-			if (col - 2 >= 0 && this.board[row - 1][col - 2] != 0) this.connect.union(index(row - 1, col - 1), index(row - 1, col - 2));
-			if (row < this.n && this.board[row][col - 1] != 0) this.connect.union(index(row - 1, col - 1), index(row, col - 1));
-			if (row - 2 >= 0 && this.board[row - 2][col - 1] != 0) this.connect.union(index(row - 2, col - 1), index(row - 2, col - 2));
+			if (row - 1 > 0 && this.isOpen(row - 1, col)) {
+				this.connect.union(index(row, col), index(row - 1, col));
+			}
+			if (row + 1 < this.n + 1 && this.isOpen(row + 1, col)) {
+				this.connect.union(index(row, col), index(row + 1, col));
+			}
+			if (col - 1 > 0 && this.isOpen(row, col - 1)) {
+				this.connect.union(index(row, col), index(row, col - 1));
+			}
+			if (col + 1 < this.n + 1 && this.isOpen(row, col + 1)) {
+				this.connect.union(index(row, col), index(row, col + 1));
+			}
 		}
 	}
 
@@ -62,16 +70,16 @@ public class Percolation {
 		p.open(1, 1);
 		System.out.println(p.isOpen(1, 1));
 		System.out.println(p.isFull(1, 1));
-		p.open(2, 1); // fails here... still working on it :c
+		p.open(2, 1); 
 		System.out.println(p.isOpen(2, 1));
 		System.out.println(p.isFull(2, 1));
-		// p.open(2, 2);
-		// p.open(3, 2);
-		// System.out.println(p.percolates());
+		p.open(2, 2);
+		p.open(3, 2);
+		System.out.println("result: " + p.percolates());
 	}
 
 	private void exceptionCheck(int i, int j) {
-		if (i >= n || i <= 0 || j >= n || j <= 0) {
+		if (i > n || i <= 0 || j > n || j <= 0) {
 			throw new IllegalArgumentException("out of bounds");
 		}
 	}

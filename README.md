@@ -16,4 +16,8 @@ Passed with 90/100
 
 Backwashing bug according to autograder ~ I did some testing in a main method and was unable replicate the bug.
 
+<<<<<<< HEAD
 **UPDATE: I am currently taking a DSA class rn. I will get back on this later :sleeping:** bye
+=======
+**UPDATE: I am currently taking a DSA class rn. I will get back on this later :sleeping:** hello
+>>>>>>> 50f8970c592b65622a34f8c754c01f87f1bdd200
